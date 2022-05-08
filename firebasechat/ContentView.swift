@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
+    // hello
     
     var body: some View {
         NavigationView{
