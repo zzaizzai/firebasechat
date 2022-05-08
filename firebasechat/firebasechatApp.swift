@@ -11,7 +11,7 @@ import SwiftUI
 struct firebasechatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginVeiw()
         }
     }
 }
