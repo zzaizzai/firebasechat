@@ -14,7 +14,7 @@
 		A6E320E22827EDE500F39D03 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A6E320E12827EDE500F39D03 /* FirebaseAuth */; };
 		A6E320E42827EDE500F39D03 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A6E320E32827EDE500F39D03 /* FirebaseStorage */; };
 		A6E320E62827EE1200F39D03 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6E320E52827EE1200F39D03 /* README.txt */; };
-		A6E320E82827EE9000F39D03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6E320E72827EE9000F39D03 /* GoogleService-Info.plist */; };
+		A6E320EA2827F0D400F39D03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6E320E92827F0D400F39D03 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		A6E320CF2827E22C00F39D03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6E320D22827E22C00F39D03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6E320E52827EE1200F39D03 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		A6E320E72827EE9000F39D03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A6E320E92827F0D400F39D03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 		A6E320CA2827E22900F39D03 /* firebasechat */ = {
 			isa = PBXGroup;
 			children = (
-				A6E320E72827EE9000F39D03 /* GoogleService-Info.plist */,
 				A6E320CB2827E22900F39D03 /* firebasechatApp.swift */,
+				A6E320E92827F0D400F39D03 /* GoogleService-Info.plist */,
 				A6E320CD2827E22900F39D03 /* LoginVeiw.swift */,
 				A6E320CF2827E22C00F39D03 /* Assets.xcassets */,
 				A6E320D12827E22C00F39D03 /* Preview Content */,
@@ -142,7 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E320E82827EE9000F39D03 /* GoogleService-Info.plist in Resources */,
+				A6E320EA2827F0D400F39D03 /* GoogleService-Info.plist in Resources */,
 				A6E320E62827EE1200F39D03 /* README.txt in Resources */,
 				A6E320D32827E22C00F39D03 /* Preview Assets.xcassets in Resources */,
 				A6E320D02827E22C00F39D03 /* Assets.xcassets in Resources */,
