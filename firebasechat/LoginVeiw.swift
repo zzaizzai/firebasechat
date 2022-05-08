@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginVeiw: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
@@ -19,19 +19,17 @@ struct ContentView: View {
                 
                 VStack(spacing: 16){
                     
-                
-                
-                Picker(selection: $isLoginMode, label: Text("dd")){
-                    Text("login")
-                        .tag(true)
-                    Text("Create Account")
-                        .tag(false)
-                }.pickerStyle(SegmentedPickerStyle())
+                    Picker(selection: $isLoginMode, label: Text("dd")){
+                        Text("login")
+                            .tag(true)
+                        Text("Create Account")
+                            .tag(false)
+                    }.pickerStyle(SegmentedPickerStyle())
                     
                     if !isLoginMode {
                         
                         Button {
-                            
+                            print("iamge button")
                         } label: {
                             Image(systemName: "person.fill")
                                 .font(.system(size: 64))
@@ -51,7 +49,7 @@ struct ContentView: View {
                 
                     
                     Button {
-                        
+                        handleAction()
                     } label: {
                         HStack{
                             Spacer()
@@ -74,10 +72,19 @@ struct ContentView: View {
                 .ignoresSafeArea())
         }
     }
+    
+    
+    private func handleAction() {
+        if isLoginMode {
+            print("should log into Firebase with existing credentials")
+        } else {
+            print("Register a new account inside of Firebase Auth and then sotore image in Storage somehow...")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoginVeiw()
     }
 }
