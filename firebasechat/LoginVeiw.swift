@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginVeiw: View {
     @State var isLoginMode = false
     @State var email = ""
     @State var password = ""
     // hello
+    
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some View {
         NavigationView{
