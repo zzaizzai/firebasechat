@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A6097FF42829881100BAF6D9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A6097FF32829881100BAF6D9 /* SDWebImageSwiftUI */; };
 		A6097FF7282A254600BAF6D9 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6097FF6282A254600BAF6D9 /* ChatUser.swift */; };
+		A6097FFA282ACFD200BAF6D9 /* CreateNewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6097FF9282ACFD200BAF6D9 /* CreateNewMessageView.swift */; };
 		A6B07E612828CA12005BC115 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B07E602828CA12005BC115 /* FirebaseManager.swift */; };
 		A6D4C1BD2827FF50008AF78B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4C1BC2827FF50008AF78B /* ImagePicker.swift */; };
 		A6D4C1C728281646008AF78B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A6D4C1C628281646008AF78B /* FirebaseAuth */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		A6097FF6282A254600BAF6D9 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		A6097FF9282ACFD200BAF6D9 /* CreateNewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewMessageView.swift; sourceTree = "<group>"; };
 		A6B07E602828CA12005BC115 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		A6D4C1BC2827FF50008AF78B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A6D4C1CD28281F23008AF78B /* MainMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMessagesView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A6097FF8282ACFBB00BAF6D9 /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				A6097FF9282ACFD200BAF6D9 /* CreateNewMessageView.swift */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
 		A6B07E5F2828C9FB005BC115 /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		A6D4C1CC28281F08008AF78B /* MainMessages */ = {
 			isa = PBXGroup;
 			children = (
+				A6097FF8282ACFBB00BAF6D9 /* NewMessage */,
 				A6D4C1CD28281F23008AF78B /* MainMessagesView.swift */,
 			);
 			path = MainMessages;
@@ -203,6 +214,7 @@
 				A6D4C1BD2827FF50008AF78B /* ImagePicker.swift in Sources */,
 				A6D4C1CE28281F23008AF78B /* MainMessagesView.swift in Sources */,
 				A6B07E612828CA12005BC115 /* FirebaseManager.swift in Sources */,
+				A6097FFA282ACFD200BAF6D9 /* CreateNewMessageView.swift in Sources */,
 				A6E320CE2827E22900F39D03 /* LoginView.swift in Sources */,
 				A6E320CC2827E22900F39D03 /* firebasechatApp.swift in Sources */,
 			);
