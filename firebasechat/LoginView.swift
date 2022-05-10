@@ -10,12 +10,15 @@ import Firebase
 
 
 
-struct LoginVeiw: View {
-    @State var isLoginMode = false
-    @State var email = ""
-    @State var password = ""
+struct LoginView: View {
     
-    @State var shouldShowImagePicker = false
+    let didCompleteLoginProcess: () -> ()
+    
+    @State private var isLoginMode = false
+    @State private var email = ""
+    @State private var password = ""
+    
+    @State private var shouldShowImagePicker = false
 
     
     var body: some View {
@@ -117,6 +120,14 @@ struct LoginVeiw: View {
     @State var loginStateMessage = ""
     
     private func createNewAccount() {
+        
+        //check imagefile
+        if self.image == nil {
+            self.loginStateMessage = "you must select a image"
+            return
+        }
+        
+        
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
             if let err = err {
@@ -169,6 +180,8 @@ struct LoginVeiw: View {
             
             self.loginStateMessage = "Successfully logged in as user: \(result?.user.uid ?? "")"
             
+            self.didCompleteLoginProcess()
+            
         }
     }
     
@@ -193,6 +206,8 @@ struct LoginVeiw: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginVeiw()
+        LoginView(didCompleteLoginProcess: {
+            
+        })
     }
 }
