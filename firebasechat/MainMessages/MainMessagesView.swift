@@ -8,10 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ChatUser {
-    let uid, email, profileImageUrl: String
-    
-}
 
 class MainMessagesViewModel: ObservableObject {
     
@@ -19,9 +15,15 @@ class MainMessagesViewModel: ObservableObject {
     @Published var chatUser: ChatUser?
 
     init() {
+        
+        DispatchQueue.main.async {
+            //not login -> true
+            self.isUserCurrentlyLoggedOut = FirebaseManager.shared.auth.currentUser?.uid == nil
+        }
+        
         fetchCurrentUser()
     }
-    private func fetchCurrentUser(){
+    func fetchCurrentUser(){
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
             self.errorMessage = "Could not find firebase uid"
@@ -41,17 +43,18 @@ class MainMessagesViewModel: ObservableObject {
                 
             }
             
-//            self.errorMessage = "DAta: \(data)"
-            let uid = data["uid"] as? String ?? ""
-            let email = data["email"] as? String ?? ""
-            let profileImageUrl = data["profileImageUrl"] as? String ?? ""
-            self.chatUser = ChatUser(uid: uid, email: email, profileImageUrl: profileImageUrl)
-//            self.errorMessage = chatUser.profileImageUrl
+            self.chatUser = .init(data: data)
+            
         }
     }
+    
+    @Published var isUserCurrentlyLoggedOut = false
+    
+    func handleSignOut() {
+        isUserCurrentlyLoggedOut.toggle()
+        try? FirebaseManager.shared.auth.signOut()
+    }
 }
-
-
 
 struct MainMessagesView: View {
     
@@ -67,7 +70,6 @@ struct MainMessagesView: View {
                 customNavBar
                 
                 messagesView
-                
                 
             }
             .overlay(
@@ -88,9 +90,6 @@ struct MainMessagesView: View {
                 .clipped()
                 .cornerRadius(50)
             
-//            Image(systemName: "person.fill")
-//                .font(.system(size: 34, weight:  .heavy))
-            
             VStack{
                 Text("\(vm.chatUser?.email ?? "")")
                     .font(.system(size: 24, weight: .bold))
@@ -99,21 +98,17 @@ struct MainMessagesView: View {
                     Circle()
                         .foregroundColor(.green)
                         .frame(width: 14, height: 14)
-    
                     Text("online")
                         .font(.system(size: 12))
                         .foregroundColor(Color(.lightGray))
-                    
                 }
-
             }
-
             Spacer()
             Button {
                 shouldShowLogOutOptions.toggle()
                 
             } label: {
-                Image(systemName: "gear")
+                Image(systemName: "square.split.2x1")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(Color(.label))
             }
@@ -124,15 +119,18 @@ struct MainMessagesView: View {
             .init(title: Text("Settings"), message: Text("What do you want to do"), buttons: [
                 .destructive(Text("Sign Out"), action: {
                     print("handle sign out")
+                    vm.handleSignOut()
                 }),
-//                        .default(Text("DEFAULT BUTTONS")),
                 .cancel()
             ])
         }
+        .fullScreenCover(isPresented: $vm.isUserCurrentlyLoggedOut, onDismiss: nil) {
+            LoginView(didCompleteLoginProcess: {
+                self.vm.isUserCurrentlyLoggedOut = false
+                self.vm.fetchCurrentUser()
+            })
+        }
     }
-    
-    
-    
     
     private var messagesView: some View {
         
@@ -183,15 +181,13 @@ struct MainMessagesView: View {
                 .cornerRadius(32)
                 .padding(.horizontal)
                 .shadow(radius: 15)
-            
         }
     }
-    
-    
 }
 
 struct MainMessagesView_Previews: PreviewProvider {
     static var previews: some View {
         MainMessagesView()
+            .previewInterfaceOrientation(.portrait)
     }
 }
